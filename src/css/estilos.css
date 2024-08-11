@@ -1,0 +1,155 @@
+body {
+    font-family: "Poppins", sans-serif;
+    /*background-color: aqua;*/
+    max-width: 1280px;
+    margin: 0 auto;
+    /*para alinhar o elemento ao meio*/
+}
+
+.carrossel {
+    position: fixed;
+    /*PROPRIEDADES PARA POSICIONAMENTO DE IMAGENS NA TELA INTEIRA*/
+
+    left: 0;
+    top: 0;
+    width: 100%;
+    /*para que ocupe 100% da tela independente de reduzir ou ampliar pagina */
+
+    z-index: -1;
+    /*indice do eixo de profundidade, ao -1 o elemento é jogado para trás, e os de trás como os textos para frente.*/
+
+
+}
+
+.informacoes {
+    display: none;
+    /*Para esconder do site o que preferirmos.*/
+
+
+}
+
+.informacoes.ativa {
+    /*Ativa para selecionarmos apenas o elemento que desejamos la no html.*/
+
+    display: block;
+    /*para mostrar, ao contrario do none acima.*/
+
+}
+
+.conteudo {
+    /* background-color: blueviolet;*/
+    display: flex;
+    /* pra facilitar o posicionamento */
+
+    flex-direction: column;
+    /*para definir a direção do flex, de um ao lado do outro "row" para um abaixo do outro "column".*/
+
+    justify-content: space-evenly;
+    /*espaçamento uniforme*/
+    min-height: 100vh;
+    /*criando espaçamento para posiciona-lo*/
+
+
+}
+
+.informacoes h1
+
+/*para aplicar estilo no h1 que está dentro da div informacoes */
+    {
+    /*background-color: brown;*/
+    font-size: 35px;
+    color: #ffffff;
+    margin-bottom: 80px;
+    /* para separar o h1 do paragrafo que está abaixo*/
+    font-family: "GOT";
+    letter-spacing: 8px;
+    /* ESPAÇAMENTO DE LETRAS EM UM TEXTO.*/
+}
+
+@font-face {
+    /*TAG PARA ADICIONAR FONTE QUE BAIXAMOS PARA O TITULO*/
+    font-family: "GOT";
+    src: url(/src/fontes/GOT.ttf);
+}
+
+.informacoes .descricao {
+    /*background-color: chartreuse;*/
+    width: 49%;
+    color: #fff;
+    line-height: 40px;
+    /* ALTURA DAS LINHAS DO PARAGRAFO*/
+    font-size: 24px;
+    height: 300px;
+    overflow: auto;
+    padding-right: 15px;
+
+
+    /*ELEMENTOS PARA CASO EU TENHA MAIS TEXTO DO QUE O DO PROJETO:
+    height: 300px;
+    overflow: auto; para criar um scroll de rolagem inves de um texto enorme.
+    padding-right: 15px; espaçamento a direita dentro da caixa de paragrafo.*/
+
+}
+
+.botoes-carrossel {
+    /*background-color: crimson;*/
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.botoes-carrossel .botao {
+    /* propriedades basicas para maioria dos menus de botoes */
+    background-color: #fff;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    border-color: #fff;
+}
+
+.botoes-carrossel .botao.selecionado {
+    background-color: #1b8346;
+}
+
+.imagem {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    /*para fazer a img caber no site sem distorção quando usado o height:100vh;*/
+    display: none;
+    /*fazemos desaparecer no site as imagens alternativas */
+}
+
+.imagem.ativa {
+    display: block;
+    /*fazemos aparecer no site apenas a imagem de destaque "ativa".*/
+    animation: mudarImagem 0.7s;
+    /* ADICIONANDO CHEAT QUE CRIAMOS ABAIXO */
+
+}
+
+@keyframes mudarImagem {
+
+    /*CHEAT ADICIONAL PARA FADE AO MUDAR IMAGEM*/
+    from {
+        opacity: 0.85;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+main:after {
+    content: "";
+    min-height: 100vh;
+    width: 100vw;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(120deg, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0.05926120448179273) 50%, rgba(0, 0, 0, 1) 90%);
+    z-index: -1;
+}
